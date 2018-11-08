@@ -86,7 +86,7 @@ ALTER TABLE relationship ADD CONSTRAINT fpk_relationship_reverse FOREIGN KEY (re
 
 ALTER TABLE concept_synonym ADD CONSTRAINT fpk_concept_synonym_concept FOREIGN KEY (concept_id)  REFERENCES concept (concept_id);
 
-ALTER TABLE concept_synonym ADD CONSTRAINT fpk_concept_synonym_concept FOREIGN KEY (language_concept_id)  REFERENCES concept (concept_id);
+--ALTER TABLE concept_synonym ADD CONSTRAINT fpk_concept_synonym_concept FOREIGN KEY (language_concept_id)  REFERENCES concept (concept_id);
 
 
 ALTER TABLE concept_ancestor ADD CONSTRAINT fpk_concept_ancestor_concept_1 FOREIGN KEY (ancestor_concept_id)  REFERENCES concept (concept_id);
