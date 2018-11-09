@@ -211,9 +211,11 @@ CREATE TABLE metadata
 )
 ;
 
+/*
 INSERT INTO metadata (metadata_concept_id, metadata_type_concept_id, name, value_as_string, value_as_concept_id, metadata_date, metadata_datetime)
 VALUES (0, 0, 'CDM Version', '6.0', 0, NULL, NULL)
 ;
+*/
 
 
 /************************
@@ -226,7 +228,7 @@ Standardized clinical data
 --HINT DISTRIBUTE_ON_KEY(person_id)
 CREATE TABLE person
 (
-  person_id						BIGINT	  	NOT NULL , 
+  person_id						BIGINT	  	NOT NULL ,
   gender_concept_id				INTEGER	  	NOT NULL ,
   year_of_birth					INTEGER	  	NOT NULL ,
   month_of_birth				INTEGER	  	NULL,
@@ -298,7 +300,7 @@ CREATE TABLE visit_occurrence
   care_site_id					BIGINT			NULL,
   visit_source_value			VARCHAR(50)		NULL,
   visit_source_concept_id		INTEGER			NOT NULL ,
-  admitted_from_concept_id      INTEGER     	NOT NULL ,   
+  admitted_from_concept_id      INTEGER     	NOT NULL ,
   admitted_from_source_value    VARCHAR(50) 	NULL ,
   discharge_to_source_value		VARCHAR(50)		NULL ,
   discharge_to_concept_id		INTEGER   		NOT NULL ,
@@ -321,7 +323,7 @@ CREATE TABLE visit_detail
   provider_id                        BIGINT      NULL ,
   care_site_id                       BIGINT      NULL ,
   discharge_to_concept_id            INTEGER     NOT NULL ,
-  admitted_from_concept_id           INTEGER     NOT NULL , 
+  admitted_from_concept_id           INTEGER     NOT NULL ,
   admitted_from_source_value         VARCHAR(50) NULL ,
   visit_detail_source_value          VARCHAR(50) NULL ,
   visit_detail_source_concept_id     INTEGER     NOT NULL ,
@@ -349,7 +351,7 @@ CREATE TABLE procedure_occurrence
   visit_detail_id             	BIGINT      	NULL ,
   procedure_source_value		VARCHAR(50)		NULL ,
   procedure_source_concept_id	INTEGER			NOT NULL ,
-  modifier_source_value		    VARCHAR(50)		NULL 
+  modifier_source_value		    VARCHAR(50)		NULL
 )
 ;
 
@@ -461,8 +463,8 @@ CREATE TABLE note
 (
   note_id						BIGINT			NOT NULL ,
   person_id						BIGINT			NOT NULL ,
-  note_event_id         		BIGINT      	NULL , 
-  note_event_field_concept_id	INTEGER 		NOT NULL , 
+  note_event_id         		BIGINT      	NULL ,
+  note_event_field_concept_id	INTEGER 		NOT NULL ,
   note_date						DATE			NULL ,
   note_datetime					TIMESTAMP		NOT NULL ,
   note_type_concept_id			INTEGER			NOT NULL ,
@@ -521,15 +523,15 @@ CREATE TABLE observation
   observation_source_concept_id		INTEGER			NOT NULL ,
   unit_source_value				    VARCHAR(50)		NULL ,
   qualifier_source_value			VARCHAR(50)		NULL ,
-  observation_event_id				BIGINT			NULL , 
-  obs_event_field_concept_id		INTEGER			NOT NULL , 
+  observation_event_id				BIGINT			NULL ,
+  obs_event_field_concept_id		INTEGER			NOT NULL ,
   value_as_datetime					TIMESTAMP		NULL
 )
 ;
 
 
 --HINT DISTRIBUTE ON KEY(person_id)
-CREATE TABLE survey_conduct 
+CREATE TABLE survey_conduct
 (
   survey_conduct_id					BIGINT			NOT NULL ,
   person_id						    BIGINT			NOT NULL ,
@@ -603,7 +605,7 @@ CREATE TABLE location_history --Table added
 (
   location_history_id           BIGINT      NOT NULL ,
   location_id			        BIGINT		NOT NULL ,
-  relationship_type_concept_id	INTEGER		NOT NULL , 
+  relationship_type_concept_id	INTEGER		NOT NULL ,
   domain_id				        VARCHAR(50)	NOT NULL ,
   entity_id				        BIGINT		NOT NULL ,
   start_date			        DATE		NOT NULL ,
@@ -686,7 +688,7 @@ CREATE TABLE cost
   cost_id						BIGINT		NOT NULL ,
   person_id						BIGINT		NOT NULL,
   cost_event_id					BIGINT      NOT NULL ,
-  cost_event_field_concept_id	INTEGER		NOT NULL , 
+  cost_event_field_concept_id	INTEGER		NOT NULL ,
   cost_concept_id				INTEGER		NOT NULL ,
   cost_type_concept_id		  	INTEGER     NOT NULL ,
   currency_concept_id			INTEGER		NOT NULL ,
